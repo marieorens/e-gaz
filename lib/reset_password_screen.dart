@@ -36,7 +36,7 @@ class ResetPasswordScreen extends StatelessWidget {
               controller: _emailController, 
               decoration: InputDecoration(
                 labelText: 'Email',
-                labelStyle: TextStyle(color: const Color.fromARGB(255, 3, 17, 3)), 
+                labelStyle: const TextStyle(color: Color.fromARGB(255, 3, 17, 3)), 
                 hintText: 'example@gmail.com',
                 hintStyle: TextStyle(color: Colors.green[300]), // Texte de l'info-bulle
                 border: OutlineInputBorder(
