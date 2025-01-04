@@ -58,11 +58,11 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
                   borderRadius: BorderRadius.circular(15),
@@ -78,7 +78,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Désignation : Petit gaz Oryx",
                       style: GoogleFonts.poppins(
@@ -87,7 +87,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Nom du client : John Mark",
                       style: GoogleFonts.poppins(
@@ -96,7 +96,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Etat de la commande : Payée",
                       style: GoogleFonts.poppins(
@@ -105,7 +105,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Adresse de livraison : Abomey-Calavi; rue 22 maison Mark",
                       style: GoogleFonts.poppins(
@@ -117,25 +117,25 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20), 
+              const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () {
-                
-                   Navigator.push(
+                  Navigator.push(
                     context,
-                     MaterialPageRoute(
-                     builder: (context) => AffectDeliver(),
-            ),
-          );
+                    MaterialPageRoute(
+                      builder: (context) => const AffectDeliver(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 24.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                icon: Icon(Icons.person_pin_circle_outlined),
+                icon: const Icon(Icons.person_pin_circle_outlined),
                 label: Text(
                   "Affecter un livreur",
                   style: GoogleFonts.poppins(

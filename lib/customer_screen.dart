@@ -4,7 +4,7 @@ import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomerScreen extends StatefulWidget {
-  const CustomerScreen({Key? key}) : super(key: key);
+  const CustomerScreen({super.key});
 
   @override
   State<CustomerScreen> createState() => _CustomerScreenState();
@@ -12,24 +12,17 @@ class CustomerScreen extends StatefulWidget {
 
 class _CustomerScreenState extends State<CustomerScreen> {
   int selectedIndex = 0;
-  
- 
+
   final List<Map<String, String>> carouselItems = [
     {
       'image': 'assets/images/gaze.jpg',
       'title': 'Pour votre confort...',
-      
     },
+    {'image': 'assets/images/comfort.jpg', 'title': 'Depuis chez vous...'},
     {
-      'image': 'assets/images/comfort.jpg',
-      'title': 'Depuis chez vous...'
-    },
-     {
       'image': 'assets/images/delivery.jpg',
       'title': 'Livraison rapide...',
-     
     }
-
   ];
 
   @override
@@ -39,9 +32,9 @@ class _CustomerScreenState extends State<CustomerScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -69,7 +62,6 @@ class _CustomerScreenState extends State<CustomerScreen> {
               ),
             ),
 
-            
             CarouselSlider(
               options: CarouselOptions(
                 height: 200.0,
@@ -89,7 +81,6 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
-                         
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15),
                             child: Image.asset(
@@ -97,7 +88,6 @@ class _CustomerScreenState extends State<CustomerScreen> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          
                           Positioned(
                             bottom: 20,
                             left: 20,
@@ -139,48 +129,50 @@ class _CustomerScreenState extends State<CustomerScreen> {
                       colors: [Colors.black, Colors.pink.shade200],
                     ),
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.green,
                         blurRadius: 8,
-                        offset: const Offset(0, 4),
+                        offset: Offset(0, 4),
                       ),
                     ],
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    Expanded(
-      child: TextField(
-        //controller: _searchController, ici il faut définir le controlleur de recherche
-        decoration: InputDecoration(
-          hintText: 'Rechercher une boutique', 
-          hintStyle: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-          filled: true,
-          fillColor: Colors.transparent, 
-          border: InputBorder.none, 
-          contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-        ),
-        style: GoogleFonts.poppins(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    ),
-    IconButton(
-      icon: const Icon(
-        Icons.search,
-        color: Colors.white,
-        size: 28,
-      ),
-      onPressed: (){} // il faut faire le code recherche ici de recherche
-    ),
-  ],
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          //controller: _searchController, ici il faut définir le controlleur de recherche
+                          decoration: InputDecoration(
+                            hintText: 'Rechercher une boutique',
+                            hintStyle: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            filled: true,
+                            fillColor: Colors.transparent,
+                            border: InputBorder.none,
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 10.0),
+                          ),
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                          icon: const Icon(
+                            Icons.search,
+                            color: Colors.white,
+                            size: 28,
+                          ),
+                          onPressed:
+                              () {} // il faut faire le code recherche ici de recherche
+                          ),
+                    ],
                   ),
                 ),
               ),

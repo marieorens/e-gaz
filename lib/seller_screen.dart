@@ -17,8 +17,8 @@ class _SellerScreenState extends State<SellerScreen> {
 
   final List<Widget> screens = [
     const SellerScreenHome(), // Accueil (Commandes en cours)
-    const ShopScreen(),       // Ma Boutique
-    const ProfilePage(),    // Profil
+    const ShopScreen(), // Ma Boutique
+    const ProfilePage(), // Profil
   ];
 
   @override
@@ -38,7 +38,6 @@ class _SellerScreenState extends State<SellerScreen> {
         ),
         backgroundColor: isDarkMode ? Colors.black : const Color(0xFFEAEAEA),
         actions: [
-          
           IconButton(
             onPressed: () {},
             icon: Icon(
@@ -48,7 +47,8 @@ class _SellerScreenState extends State<SellerScreen> {
           ),
         ],
       ),
-      body: screens[selectedIndex], // Change l'écran affiché selon l'index sélectionné
+      body: screens[
+          selectedIndex], // Change l'écran affiché selon l'index sélectionné
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
@@ -159,7 +159,7 @@ class SellerScreenHome extends StatelessWidget {
                             ),
                           );
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.visibility,
                           color: Colors.black,
                         ),
