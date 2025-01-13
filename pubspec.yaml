@@ -44,6 +44,9 @@ dependencies:
   url_launcher: ^6.3.0
   flutter_vector_icons:
   video_player: ^2.8.1
+  google_fonts: ^5.0.0
+  
+
   
 
 dev_dependencies:

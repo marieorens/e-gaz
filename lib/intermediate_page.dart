@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:egaz/login_screen.dart';
 
 class IntermediatePage extends StatefulWidget {
-  const IntermediatePage({Key? key}) : super(key: key);
+  const IntermediatePage({super.key});
 
   @override
   State<IntermediatePage> createState() => _IntermediatePageState();

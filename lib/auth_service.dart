@@ -22,7 +22,7 @@ class AuthService {
     required String password,
     required String role,
   }) async {
-    try {
+    try { 
      
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
@@ -44,30 +44,36 @@ class AuthService {
   }
 
   
-  Future<String?> login({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email.trim(),
-        password: password.trim(),
-      );
+ Future<String?> login({
+  required String email,
+  required String password,
+}) async {
+  try {
+    // Authentification de l'utilisateur
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email.trim(),
+      password: password.trim(),
+    );
 
-      
-      DocumentSnapshot userDoc = await _firestore
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .get();
+    // Récupération du document utilisateur depuis Firestore
+    DocumentSnapshot userDoc = await _firestore
+        .collection('users')
+        .doc(userCredential.user!.uid)
+        .get();
 
+    // Vérification si le document existe
+    if (userDoc.exists) {
+      // Si le document existe, on retourne le champ 'role'
       return userDoc['role']; 
-    } catch (e) {
-      return e.toString(); 
+    } else {
+      // Si le document n'existe pas, retourner un message d'erreur
+      return 'Utilisateur non trouvé';
     }
+  } catch (e) {
+    return e.toString(); 
   }
+}
 
- 
   signOut() async {
     _auth.signOut();
   }
