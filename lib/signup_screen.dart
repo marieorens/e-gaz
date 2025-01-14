@@ -73,7 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 40),
 
-                // Champ nom
+               
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -86,7 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Champ email
+               
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Champ mot de passe
+              
                 TextField(
                   controller: _passwordController,
                   decoration: InputDecoration(
@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Sélection du rôle
+                
                 DropdownButtonFormField<String>(
                   value: _selectedRole,
                   decoration: InputDecoration(
@@ -175,7 +175,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                 const SizedBox(height: 20),
 
-                // Lien de connexion
+               
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
