@@ -16,9 +16,9 @@ class _SellerScreenState extends State<SellerScreen> {
   int selectedIndex = 0; // Index pour gérer la navigation entre les écrans
 
   final List<Widget> screens = [
-    SellerScreenHome(), // Accueil (Commandes en cours)
-    ShopScreen(),       // Ma Boutique
-    ProfileScreen(),    // Profil
+    const SellerScreenHome(), // Accueil (Commandes en cours)
+    const ShopScreen(),       // Ma Boutique
+    const ProfilePage(),    // Profil
   ];
 
   @override
@@ -38,24 +38,7 @@ class _SellerScreenState extends State<SellerScreen> {
         ),
         backgroundColor: isDarkMode ? Colors.black : const Color(0xFFEAEAEA),
         actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                isDarkMode = !isDarkMode;
-              });
-            },
-            icon: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
-              transitionBuilder: (child, animation) {
-                return ScaleTransition(scale: animation, child: child);
-              },
-              child: Icon(
-                isDarkMode ? Icons.wb_sunny : Icons.nightlight_round,
-                key: ValueKey<bool>(isDarkMode),
-                color: isDarkMode ? Colors.yellow : Colors.black,
-              ),
-            ),
-          ),
+          
           IconButton(
             onPressed: () {},
             icon: Icon(

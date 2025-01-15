@@ -136,10 +136,7 @@ class StockPage extends StatelessWidget {
             const SizedBox(height: 32),
 
             // Affichage des quantités de bouteilles
-            Text(
-              'Quantités de Bouteilles',
-              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+           
             const SizedBox(height: 16),
             Column(
               children: [
@@ -214,31 +211,71 @@ class _QuantityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
+    final Color textColor = isDarkMode ? Colors.white : Colors.black;
+    final Color quantityColor = quantity < 100 ? Colors.red : Colors.green;
 
-    return Card(
-      color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              label,
-              style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '$quantity',
-              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold, color: isDarkMode ? Colors.white : Colors.black),
-            ),
-          ],
+    // Sélection d'icône en fonction de la quantité
+    final IconData icon = quantity < 100 
+        ? Icons.inventory_2_rounded // Petite bouteille
+        : Icons.inventory_2_rounded;  // Grande bouteille
+
+    // Dimensions adaptatives
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double cardWidth = screenWidth * 0.85; // 85% de la largeur de l'écran
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0), // Espacement entre les cartes
+      child: Card(
+        color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Container(
+          width: cardWidth,
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icône en haut
+              Icon(
+                icon,
+                size: 50,
+                color: isDarkMode ? Colors.amber : Colors.blue,
+              ),
+              const SizedBox(height: 8),
+
+              // Étiquette
+              Text(
+                label,
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
+              ),
+              const SizedBox(height: 8),
+
+              // Quantité
+              AnimatedOpacity(
+                opacity: 1.0,
+                duration: const Duration(milliseconds: 500),
+                child: Text(
+                  '$quantity',
+                  style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: quantityColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+
 
 class AddGasFormPage extends StatefulWidget {
   const AddGasFormPage({super.key});

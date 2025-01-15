@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:egaz/login_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class IntermediatePage extends StatefulWidget {
   const IntermediatePage({super.key});
@@ -30,7 +31,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
     if (_currentPage < _slides.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
+        curve: Curves.easeInOut,  // Vous pouvez essayer différentes courbes pour plus de fluidité
       );
     } else {
       _navigateToLogin();
@@ -69,7 +70,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
                     children: [
                       Text(
                         slide["title"],
-                        style: const TextStyle(
+                        style: GoogleFonts.poppins(  // Appliquer Poppins à ce texte
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -80,14 +81,15 @@ class _IntermediatePageState extends State<IntermediatePage> {
                       const SizedBox(height: 24),
                       Lottie.asset(
                         slide["animation"],
-
                         width: 500,
                         height: 500,
+                        repeat: true,  // Pour donner un effet d'animation fluide
+                        reverse: true,  // Animer dans les deux sens pour un effet plus cool
                       ),
                       const SizedBox(height: 16),
                       Text(
                         slide["description"],
-                        style: const TextStyle(
+                        style: GoogleFonts.poppins(  // Appliquer Poppins à ce texte
                           fontSize: 16,
                           color: Colors.black54,
                         ),
@@ -107,9 +109,9 @@ class _IntermediatePageState extends State<IntermediatePage> {
                 // Skip Button
                 TextButton(
                   onPressed: _navigateToLogin,
-                  child: const Text(
+                  child: Text(
                     "Passer",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(  // Appliquer Poppins à ce texte
                       fontSize: 16,
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
@@ -130,10 +132,14 @@ class _IntermediatePageState extends State<IntermediatePage> {
                     children: [
                       Text(
                         _currentPage == _slides.length - 1 ? "Commencer" : "Suivant",
-                        style: const TextStyle(fontSize: 16, color: Colors.white),
+                        style: GoogleFonts.poppins(  
+                          fontSize: 16, 
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                       const SizedBox(width: 8),
-                      const Icon(Icons.arrow_forward, color: Colors.white),
+                      const Icon(Icons.arrow_forward, color: Colors.black),
                     ],
                   ),
                 ),
