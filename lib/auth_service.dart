@@ -49,24 +49,24 @@ class AuthService {
   required String password,
 }) async {
   try {
-    // Authentification de l'utilisateur
+   
     UserCredential userCredential = await _auth.signInWithEmailAndPassword(
       email: email.trim(),
       password: password.trim(),
     );
 
-    // Récupération du document utilisateur depuis Firestore
+   
     DocumentSnapshot userDoc = await _firestore
         .collection('users')
         .doc(userCredential.user!.uid)
         .get();
 
-    // Vérification si le document existe
+   
     if (userDoc.exists) {
-      // Si le document existe, on retourne le champ 'role'
+     
       return userDoc['role']; 
     } else {
-      // Si le document n'existe pas, retourner un message d'erreur
+    
       return 'Utilisateur non trouvé';
     }
   } catch (e) {
