@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:egaz/auth_service.dart';
+import 'package:egaz/pages_authentification/auth_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
