@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:egaz/login_screen.dart';
+import 'package:egaz/pages_authentification/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IntermediatePage extends StatefulWidget {
@@ -49,7 +49,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 210, 159, 93),
       body: Column(
         children: [
           Expanded(
@@ -113,7 +113,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
                     "Passer",
                     style: GoogleFonts.poppins(  // Appliquer Poppins à ce texte
                       fontSize: 16,
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

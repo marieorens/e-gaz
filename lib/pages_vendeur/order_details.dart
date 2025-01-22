@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:egaz/affect_deliver.dart';
+import 'package:egaz/pages_vendeur/affect_deliver.dart';
 
 class OrderDetailPage extends StatefulWidget {
   const OrderDetailPage({super.key});

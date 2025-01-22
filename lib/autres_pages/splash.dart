@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:egaz/intermediate_page.dart';
+import 'package:egaz/autres_pages/intermediate_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
