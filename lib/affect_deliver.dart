@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:egaz/pages_vendeur/seller_screen.dart';
+import 'package:egaz/seller_screen.dart';
 
 class AffectDeliver extends StatefulWidget {
   const AffectDeliver({super.key});

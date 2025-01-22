@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:egaz/autres_pages/theme_provider.dart';
-import 'package:egaz/pages_vendeur/profilempodificationpage.dart';
-import 'package:egaz/pages_authentification/login_screen.dart';
+import 'package:egaz/theme_provider.dart';
+import 'package:egaz/profilempodificationpage.dart';
+import 'package:egaz/login_screen.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 

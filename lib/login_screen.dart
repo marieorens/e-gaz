@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:egaz/pages_vendeur/seller_screen.dart';
-import 'package:egaz/pages_authentification/signup_screen.dart';
-import 'package:egaz/pages_authentification/auth_service.dart';
-import 'package:egaz/pages_authentification/reset_password_screen.dart';
-import 'package:egaz/pages_client/customer_screen.dart';
+import 'package:egaz/seller_screen.dart';
+import 'package:egaz/signup_screen.dart';
+import 'package:egaz/auth_service.dart';
+import 'package:egaz/reset_password_screen.dart';
+import 'package:egaz/customer_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

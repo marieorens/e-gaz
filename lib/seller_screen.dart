@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:egaz/pages_vendeur/order_details.dart';
-import 'package:egaz/pages_vendeur/shop_screen.dart'; 
-import 'package:egaz/pages_vendeur/profile_screen.dart'; 
+import 'package:egaz/order_details.dart';
+import 'package:egaz/shop_screen.dart'; // Import du fichier Ma Boutique
+import 'package:egaz/profile_screen.dart'; // Import du fichier Profil
 
 class SellerScreen extends StatefulWidget {
   const SellerScreen({super.key});
