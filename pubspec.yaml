@@ -80,12 +80,7 @@ flutter:
      - assets/images/delivery.jpg
      - assets/images/comfort.jpg
 
-<<<<<<< Updated upstream
-=======
-platforms:
-    windows:
-    Web:
->>>>>>> Stashed changes
+
 
   # fonts:
   #   - family: Schyler
