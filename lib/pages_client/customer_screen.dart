@@ -7,7 +7,7 @@ import 'package:egaz/pages_client/customer_shopping_cart.dart';
 import 'package:egaz/pages_client/customer_history.dart';
 
 class CustomerScreen extends StatefulWidget {
-  const CustomerScreen({Key? key}) : super(key: key);
+  const CustomerScreen({super.key});
 
   @override
   State<CustomerScreen> createState() => _CustomerScreenState();
@@ -81,18 +81,17 @@ final stores = [
 class _CustomerScreenState extends State<CustomerScreen> {
   int selectedIndex = 0;
 
-  
   final List<Widget> screens = [
-    const CustomerHomeScreen(), 
-    const CartPage(), 
-    const PurchaseHistoryPage(), 
+    const CustomerHomeScreen(),
+    const CartPage(),
+    const PurchaseHistoryPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: screens[selectedIndex], 
+      body: screens[selectedIndex],
       bottomNavigationBar: SlidingClippedNavBar(
         backgroundColor: Colors.white,
         onButtonPressed: (index) {
@@ -122,9 +121,8 @@ class _CustomerScreenState extends State<CustomerScreen> {
   }
 }
 
-
 class CustomerHomeScreen extends StatelessWidget {
-  const CustomerHomeScreen({Key? key}) : super(key: key);
+  const CustomerHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -146,31 +144,31 @@ class CustomerHomeScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-               GestureDetector(
-                onTap: () {
-                Navigator.push(
-                 context,
-                   MaterialPageRoute(
-                    builder: (context) => const ProfilePage(), 
-                   ),
-                    );
-                      },
-                   child: CircleAvatar(
-                   radius: 20,
-                   backgroundColor: Colors.grey,
-                   child: const Icon(
-                   Icons.person, 
-                   color: Colors.white,
-                   size: 20,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
                       ),
-          ),
-),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.grey,
+                    child: const Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ),
+                ),
                 Text(
                   'e-gaz',
                   style: GoogleFonts.poppins(
@@ -191,7 +189,6 @@ class CustomerHomeScreen extends StatelessWidget {
             ),
           ),
 
-         
           CarouselSlider(
             options: CarouselOptions(
               height: 200.0,
@@ -263,7 +260,7 @@ class CustomerHomeScreen extends StatelessWidget {
                     BoxShadow(
                       color: Colors.green,
                       blurRadius: 8,
-                      offset: const Offset(0, 4),
+                      offset: Offset(0, 4),
                     ),
                   ],
                 ),
@@ -308,83 +305,82 @@ class CustomerHomeScreen extends StatelessWidget {
             ),
           ),
 
-
           Expanded(
-  child: ListView.builder(
-    itemCount: stores.length,
-    itemBuilder: (context, index) {
-      final store = stores[index];
-      return Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.grey.shade200,
-              width: 1,
+            child: ListView.builder(
+              itemCount: stores.length,
+              itemBuilder: (context, index) {
+                final store = stores[index];
+                return Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey.shade200,
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(16),
+                    leading: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey.shade200,
+                      ),
+                      child: const Icon(Icons.store),
+                    ),
+                    title: Text(
+                      store.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 4),
+                        Text(
+                          store.location,
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Heures d\'ouverture: ${store.openingHours}',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          store.distance,
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 16,
+                          color: Colors.grey.shade400,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
-          ),
-        ),
-        child: ListTile(
-          contentPadding: const EdgeInsets.all(16),
-          leading: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey.shade200,
-            ),
-            child: const Icon(Icons.store),
-          ),
-          title: Text(
-            store.name,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 4),
-              Text(
-                store.location,
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Heures d\'ouverture: ${store.openingHours}',
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                store.distance,
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: Colors.grey.shade400,
-              ),
-            ],
-          ),
-        ),
-      );
-    },
-  ),
-)
+          )
         ],
       ),
     );
