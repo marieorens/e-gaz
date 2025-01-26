@@ -53,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                Text( 
                   'Bienvenue, rejoignez-nous !',
                   style: GoogleFonts.poppins(
                     fontSize: 26,
