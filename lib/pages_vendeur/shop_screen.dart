@@ -68,7 +68,9 @@ class ShopScreen extends StatelessWidget {
   }
 
   Widget _buildOption(BuildContext context,
-      {required IconData icon, required String label, required VoidCallback onTap}) {
+      {required IconData icon,
+      required String label,
+      required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -84,7 +86,8 @@ class ShopScreen extends StatelessWidget {
             Text(
               label,
               textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                  fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -100,7 +103,8 @@ class StockPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
+    const bool isDarkMode =
+        false; // Remplacez cette logique par votre gestion de thème
 
     return Scaffold(
       appBar: AppBar(
@@ -122,35 +126,40 @@ class StockPage extends StatelessWidget {
             // Affichage des types de gaz
             Text(
               'Types de Gaz',
-              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                  fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 _GasCard(gasName: 'Oryx'),
-                _GasCard(gasName: 'Petro'),
-                _GasCard(gasName: 'Gazy'),
+                _GasCard(gasName: 'Bénin Petro'),
+                _GasCard(gasName: 'ProGaz'),
               ],
             ),
             const SizedBox(height: 32),
 
             // Affichage des quantités de bouteilles
-           
+
             const SizedBox(height: 16),
-            Column(
+            const Column(
               children: [
                 // Emballage de chaque carte avec Padding et Expanded
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16), // Marge entre les cartes
+                  padding:
+                      EdgeInsets.only(bottom: 16), // Marge entre les cartes
                   child: Expanded(
-                    child: _QuantityCard(label: 'Petites Bouteilles', quantity: 426),
+                    child: _QuantityCard(
+                        label: 'Petites Bouteilles', quantity: 426),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16), // Marge entre les cartes
+                  padding:
+                      EdgeInsets.only(bottom: 16), // Marge entre les cartes
                   child: Expanded(
-                    child: _QuantityCard(label: 'Grandes Bouteilles', quantity: 332),
+                    child: _QuantityCard(
+                        label: 'Grandes Bouteilles', quantity: 332),
                   ),
                 ),
               ],
@@ -166,13 +175,12 @@ class StockPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const AddGasFormPage()),
           );
         },
-        child: const Icon(Icons.add),
         backgroundColor: isDarkMode ? Colors.yellow : Colors.blue,
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
-
 
 class _GasCard extends StatelessWidget {
   final String gasName;
@@ -181,7 +189,8 @@ class _GasCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
+    const bool isDarkMode =
+        false; // Remplacez cette logique par votre gestion de thème
 
     return Card(
       color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
@@ -210,21 +219,23 @@ class _QuantityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
-    final Color textColor = isDarkMode ? Colors.white : Colors.black;
+    const bool isDarkMode =
+        false; // Remplacez cette logique par votre gestion de thème
+    const Color textColor = isDarkMode ? Colors.white : Colors.black;
     final Color quantityColor = quantity < 100 ? Colors.red : Colors.green;
 
     // Sélection d'icône en fonction de la quantité
-    final IconData icon = quantity < 100 
+    final IconData icon = quantity < 100
         ? Icons.inventory_2_rounded // Petite bouteille
-        : Icons.inventory_2_rounded;  // Grande bouteille
+        : Icons.inventory_2_rounded; // Grande bouteille
 
     // Dimensions adaptatives
     final double screenWidth = MediaQuery.of(context).size.width;
     final double cardWidth = screenWidth * 0.85; // 85% de la largeur de l'écran
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0), // Espacement entre les cartes
+      padding: const EdgeInsets.symmetric(
+          vertical: 10.0, horizontal: 16.0), // Espacement entre les cartes
       child: Card(
         color: isDarkMode ? Colors.grey[800] : Colors.grey[200],
         elevation: 5,
@@ -275,8 +286,6 @@ class _QuantityCard extends StatelessWidget {
   }
 }
 
-
-
 class AddGasFormPage extends StatefulWidget {
   const AddGasFormPage({super.key});
 
@@ -292,7 +301,8 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
+    const bool isDarkMode =
+        false; // Remplacez cette logique par votre gestion de thème
 
     return Scaffold(
       appBar: AppBar(
@@ -308,19 +318,21 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisSize: MainAxisSize.min, // Pour que la colonne prenne seulement l'espace nécessaire
+              mainAxisSize: MainAxisSize
+                  .min, // Pour que la colonne prenne seulement l'espace nécessaire
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Formulaire d\'ajout de Gaz',
-                  style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.poppins(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 32),
 
                 // Champ pour le nom du gaz
                 TextFormField(
                   controller: _gasNameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Nom du Gaz',
                     border: OutlineInputBorder(),
                   ),
@@ -337,7 +349,7 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
                 TextFormField(
                   controller: _smallBottlesController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Petites Bouteilles',
                     border: OutlineInputBorder(),
                   ),
@@ -357,7 +369,7 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
                 TextFormField(
                   controller: _largeBottlesController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Grandes Bouteilles',
                     border: OutlineInputBorder(),
                   ),
@@ -379,8 +391,10 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
                     if (_formKey.currentState?.validate() ?? false) {
                       // Si la validation passe, vous pouvez soumettre le formulaire
                       String gasName = _gasNameController.text;
-                      int smallBottles = int.parse(_smallBottlesController.text);
-                      int largeBottles = int.parse(_largeBottlesController.text);
+                      int smallBottles =
+                          int.parse(_smallBottlesController.text);
+                      int largeBottles =
+                          int.parse(_largeBottlesController.text);
 
                       // Logique pour soumettre le formulaire
                       // Par exemple, enregistrer les données ou effectuer une action
@@ -395,7 +409,8 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green, // Définir la couleur d'arrière-plan sur vert
+                    backgroundColor: Colors
+                        .green, // Définir la couleur d'arrière-plan sur vert
                   ),
                   child: Text(
                     'Ajouter le Gaz',
@@ -413,14 +428,13 @@ class _AddGasFormPageState extends State<AddGasFormPage> {
   }
 }
 
-
-
 class ReviewsPage extends StatelessWidget {
   const ReviewsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez cette logique par votre gestion de thème
+    const bool isDarkMode =
+        false; // Remplacez cette logique par votre gestion de thème
 
     return Scaffold(
       appBar: AppBar(
@@ -436,7 +450,7 @@ class ReviewsPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
@@ -471,8 +485,8 @@ class ReviewsPage extends StatelessWidget {
                       color: isDarkMode ? Colors.yellow : Colors.blue,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8, horizontal: 16),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     child: Text(
                       '4 étoiles', // Note de l'utilisateur
                       style: GoogleFonts.poppins(
@@ -491,14 +505,14 @@ class ReviewsPage extends StatelessWidget {
   }
 }
 
-
 class LocationPage extends StatelessWidget {
   const LocationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController locationController = TextEditingController();
-    final bool isDarkMode = false; // Remplacez par votre gestion de thème si nécessaire
+    const bool isDarkMode =
+        false; // Remplacez par votre gestion de thème si nécessaire
 
     return Scaffold(
       appBar: AppBar(
@@ -514,7 +528,7 @@ class LocationPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
@@ -595,13 +609,12 @@ class LocationPage extends StatelessWidget {
   }
 }
 
-
 class DeliveryPage extends StatelessWidget {
   const DeliveryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = false; // Remplacez avec votre gestion de thème
+    const bool isDarkMode = false; // Remplacez avec votre gestion de thème
 
     return Scaffold(
       appBar: AppBar(
@@ -617,7 +630,7 @@ class DeliveryPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
@@ -626,9 +639,11 @@ class DeliveryPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Center(  // Centrer les éléments dans le body
+        child: Center(
+          // Centrer les éléments dans le body
           child: Column(
-            mainAxisSize: MainAxisSize.min,  // Centrer le contenu sans prendre toute la hauteur
+            mainAxisSize: MainAxisSize
+                .min, // Centrer le contenu sans prendre toute la hauteur
             children: [
               Expanded(
                 child: ListView.builder(
@@ -680,7 +695,8 @@ class DeliveryPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,  // Le bouton flottant sera aligné à droite
+      floatingActionButtonLocation: FloatingActionButtonLocation
+          .endFloat, // Le bouton flottant sera aligné à droite
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

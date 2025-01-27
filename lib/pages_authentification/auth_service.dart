@@ -9,10 +9,10 @@ class AuthService {
 
  Future<String?> resetPassword(String email) async {
     try {
-      await _auth.sendPasswordResetEmail(email: email); // Envoi de l'email de réinitialisation
-      return null; // Aucun erreur
+      await _auth.sendPasswordResetEmail(email: email); 
+      return null; 
     } catch (e) {
-      return e.toString(); // Retourne l'erreur si elle existe
+      return e.toString(); 
     }
   }
 

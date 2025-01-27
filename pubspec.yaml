@@ -51,6 +51,8 @@ dependencies:
   kkiapay_flutter_sdk:
   geolocator: ^9.0.2
   flutter_rating_bar: ^4.0.1
+  shared_preferences:
+  
   
 
   

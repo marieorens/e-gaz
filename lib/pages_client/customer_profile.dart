@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:egaz/autres_pages/theme_provider.dart';
+
 import 'package:egaz/pages_vendeur/profilempodificationpage.dart';
 import 'package:egaz/pages_authentification/login_screen.dart';
 
@@ -10,23 +9,23 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    
 
     return Scaffold(
         appBar: AppBar(
-        backgroundColor: themeProvider.isDarkMode ? Colors.black : const Color(0xFFF5F5F5),
+        backgroundColor: const Color(0xFFF5F5F5),
         title: Text(
           "Mon profil",
           style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+            color:  Colors.black,
           ),
         ),
         centerTitle: true, 
       ),
 
-      backgroundColor: themeProvider.isDarkMode ? Colors.black : const Color(0xFFF5F5F5),
+      backgroundColor : const Color(0xFFF5F5F5),
       body: Center( 
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -36,7 +35,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 50,
-                backgroundColor: themeProvider.isDarkMode ? Colors.grey[800] : Colors.grey[300],
+                backgroundColor: Colors.grey[800] ,
                 child: const Icon(
                   Icons.add,
                   size: 30,
@@ -49,7 +48,7 @@ class ProfilePage extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 30),
@@ -57,7 +56,7 @@ class ProfilePage extends StatelessWidget {
                 context: context,
                 icon: Icons.edit,
                 label: "Modifier mon profil",
-                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                color:  Colors.black,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -72,7 +71,7 @@ class ProfilePage extends StatelessWidget {
                 context: context,
                 icon: Icons.logout,
                 label: "Déconnexion",
-                color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                color:  Colors.black,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -106,18 +105,18 @@ class ProfilePage extends StatelessWidget {
     required Color color,
     required VoidCallback onTap,
   }) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         decoration: BoxDecoration(
-          color: themeProvider.isDarkMode ? Colors.grey[900] : Colors.white,
+          color:  Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: themeProvider.isDarkMode ? Colors.black45 : Colors.grey.shade300,
+              color:  Colors.grey.shade300,
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),

@@ -3,11 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:egaz/pages_client/customer_screen.dart';
 import 'package:egaz/pages_client/customer_shopping_cart.dart';
+import 'package:egaz/providers/cart_provider.dart'; 
+import 'package:provider/provider.dart';
+
 
 class StoreDetailPage extends StatefulWidget {
   final Store store;
 
-  const StoreDetailPage({Key? key, required this.store}) : super(key: key);
+  const StoreDetailPage({super.key, required this.store});
 
   @override
   _StoreDetailPageState createState() => _StoreDetailPageState();
@@ -55,6 +58,7 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                       'Noter la boutique',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
+                        
                       ),
                     ),
                     content: Column(
@@ -98,7 +102,7 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                 ),
               const SizedBox(height: 50),
 
-              // Section pour "Nos petites bouteilles"
+              // "Nos petites bouteilles"
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
@@ -110,7 +114,7 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Section ListView pour les petites bouteilles
+             
               SizedBox(
                 height: 200,
                 child: ListView.builder(
@@ -121,13 +125,13 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                     return ProductCard(
                       imageUrl: 'assets/images/petite_bouteille_${index + 1}.jpeg',
                       name: 'Petite bouteille ${index + 1}',
-                      price: '${4800 + 500} CFA',
+                      price: 4800,
                     );
                   },
                 ),
               ),
 
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
 
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -151,13 +155,13 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                     return ProductCard(
                       imageUrl: 'assets/images/grande_bouteille_${index + 1}.jpeg',
                       name: 'Grande bouteille ${index + 1}',
-                      price: '${5400 + 500} CFA',
+                      price: 5400,
                     );
                   },
                 ),
               ),
 
-              SizedBox(height: 150),
+              const SizedBox(height: 150),
 
               
               Padding(
@@ -188,7 +192,7 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    minimumSize: Size(double.infinity, 50),
+                    minimumSize: const Size(double.infinity, 50),
                   ),
                 ),
               ),
@@ -200,27 +204,23 @@ class _StoreDetailPageState extends State<StoreDetailPage> {
   }
 }
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   final String imageUrl;
   final String name;
-  final String price;
+  final int price;
   
   const ProductCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.name,
-    required this.price, 
-  }) : super(key: key);
-
-  @override
-  _ProductCardState createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  int quantity = 0;
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+    final String productId = name.toLowerCase().replaceAll(' ', '_');
+    
     return Container(
       width: 160,
       margin: const EdgeInsets.only(right: 16),
@@ -231,65 +231,65 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
             child: Image.asset(
-              widget.imageUrl,
-              height: 94, 
-              width: double.infinity, 
-              fit: BoxFit.cover, 
+              imageUrl,
+              height: 86,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
-          
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.name,
+                  name,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 Text(
-                  widget.price,
+                  '$price CFA',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remove),
-                      onPressed: () {
-                        if (quantity > 0) {
-                          setState(() {
-                            quantity--;
-                          });
-                        }
-                      },
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      cart.addItem(productId, name, price, imageUrl);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Produit ajouté au panier',
+                            style: GoogleFonts.poppins(),
+                          ),
+                          duration: const Duration(seconds: 2),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                    Text(
-                      '$quantity',
+                    child: Text(
+                      'Ajouter au panier',
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        color: Colors.white,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () {
-                        setState(() {
-                          quantity++;
-                        });
-                      },
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
