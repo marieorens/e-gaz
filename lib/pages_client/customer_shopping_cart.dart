@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
+import 'package:egaz/pages_client/success_pay.dart';
+import 'package:egaz/pages_client/failed_pay.dart';
+
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -11,7 +15,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final int basePrice = 5200;
-  List<int> quantities = [1, 2]; // Initial quantities
+  List<int> quantities = [1, 2]; 
 
   @override
   void initState() {
@@ -28,6 +32,7 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
+  
   void updateQuantity(int index, bool increment) {
     setState(() {
       if (increment) {
@@ -39,7 +44,56 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
     });
   }
 
+  
   int get totalPrice => quantities.fold(0, (sum, quantity) => sum + (basePrice * quantity));
+
+  
+  void paymentCallback(Map<String, dynamic> response, BuildContext context) {
+    switch (response['status']) {
+      case PAYMENT_SUCCESS:
+       Navigator.push(
+                 context,
+                   MaterialPageRoute(
+                    builder: (context) =>  SuccessScreen(), 
+                   ),
+                    );
+        break;
+      case PAYMENT_CANCELLED:
+        Navigator.push(
+                 context,
+                   MaterialPageRoute(
+                    builder: (context) =>  FailureScreen(), 
+                   ),
+                    );
+        break;
+      default:
+       
+        break;
+    }
+  }
+
+  
+  void startPayment(BuildContext context) {
+    final kkiapay = KKiaPay(
+      amount: totalPrice, 
+      countries: ["BJ", "CI", "SN", "TG"],
+      phone: "", 
+      name: "",
+      email: "",
+      reason: 'Paiement de commande',
+      sandbox: true,
+      apikey: "0a9be610652111efbf02478c5adba4b8",
+      callback: paymentCallback, 
+      theme: "#222F5A", 
+      paymentMethods: ["momo", "card"],
+    );
+
+    
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => kkiapay),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +107,7 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
             fontSize: 25,
           ),
         ),
-         centerTitle:true,
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -89,9 +143,8 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
                     Text(
                       'Total',
                       style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600
+                        fontWeight: FontWeight.w600,
                       ),
-                      
                     ),
                     AnimatedBuilder(
                       animation: _controller,
@@ -109,7 +162,7 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
                 const SizedBox(height: 16),
                 const SizedBox(height: 5),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () => startPayment(context), 
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size(double.infinity, 50),
                     backgroundColor: Colors.green,
@@ -122,7 +175,7 @@ class _CartPageState extends State<CartPage> with SingleTickerProviderStateMixin
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w600,
                       fontSize: 20,
-                      color: Colors.black
+                      color: Colors.black,
                     ),
                   ),
                 ),
