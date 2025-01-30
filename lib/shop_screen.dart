@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'add_delivery_person_page.dart';
+import 'pages_vendeur/add_delivery_person_page.dart';
 
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});

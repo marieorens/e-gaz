@@ -159,10 +159,10 @@ class CustomerHomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.grey,
-                    child: const Icon(
+                    child: Icon(
                       Icons.person,
                       color: Colors.white,
                       size: 20,

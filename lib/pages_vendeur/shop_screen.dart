@@ -221,7 +221,7 @@ class _QuantityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     const bool isDarkMode =
         false; // Remplacez cette logique par votre gestion de thème
-    final Color textColor = isDarkMode ? Colors.white : Colors.black;
+    const Color textColor = isDarkMode ? Colors.white : Colors.black;
     final Color quantityColor = quantity < 100 ? Colors.red : Colors.green;
 
     // Sélection d'icône en fonction de la quantité
@@ -450,7 +450,7 @@ class ReviewsPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
@@ -528,7 +528,7 @@ class LocationPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
@@ -630,7 +630,7 @@ class DeliveryPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
               color: isDarkMode ? Colors.white : Colors.black,
             ),
