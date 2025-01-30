@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:egaz/pages_client/customer_profile.dart';
 import 'package:egaz/pages_client/customer_shopping_cart.dart';
 import 'package:egaz/pages_client/customer_history.dart';
+import 'package:egaz/pages_client/store_detail_page.dart';
 
 class CustomerScreen extends StatefulWidget {
   const CustomerScreen({super.key});
@@ -159,10 +160,10 @@ class CustomerHomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const CircleAvatar(
+                  child: CircleAvatar(
                     radius: 20,
                     backgroundColor: Colors.grey,
-                    child: Icon(
+                    child: const Icon(
                       Icons.person,
                       color: Colors.white,
                       size: 20,

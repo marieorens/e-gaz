@@ -134,8 +134,8 @@ class StockPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _GasCard(gasName: 'Oryx'),
-                _GasCard(gasName: 'Petro'),
-                _GasCard(gasName: 'Gazy'),
+                _GasCard(gasName: 'Bénin Petro'),
+                _GasCard(gasName: 'ProGaz'),
               ],
             ),
             const SizedBox(height: 32),

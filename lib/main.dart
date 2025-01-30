@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:egaz/autres_pages/theme_provider.dart';
 import 'package:egaz/autres_pages/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:egaz/pages_authentification/firebase_options.dart';
+import 'package:egaz/providers/cart_provider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+       
+        ChangeNotifierProvider(create: (ctx) => CartProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,33 +27,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: themeProvider.isDarkMode
-                ? ThemeData.dark().copyWith(
-                    appBarTheme: const AppBarTheme(
-                      backgroundColor: Colors.black,
-                      iconTheme: IconThemeData(color: Colors.white),
-                      titleTextStyle:
-                          TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  )
-                : ThemeData.light().copyWith(
-                    appBarTheme: const AppBarTheme(
-                      backgroundColor: Colors.white,
-                      iconTheme: IconThemeData(color: Colors.black),
-                      titleTextStyle:
-                          TextStyle(color: Colors.black, fontSize: 20),
-                    ),
+    return Consumer(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme:  ThemeData.light().copyWith(
+                  appBarTheme: const AppBarTheme(
+                    backgroundColor: Colors.white,
+                    iconTheme: IconThemeData(color: Colors.black),
+                    titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
                   ),
-            home: const SplashScreen(),
-          );
-        },
-      ),
+                ),
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

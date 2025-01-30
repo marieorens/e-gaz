@@ -49,6 +49,12 @@ dependencies:
   sliding_clipped_nav_bar:
   carousel_slider:
   kkiapay_flutter_sdk:
+  geolocator: ^9.0.2
+  flutter_rating_bar: ^4.0.1
+  shared_preferences:
+  
+  
+
   
 
   
@@ -82,6 +88,13 @@ flutter:
      - assets/images/comfort.jpg
      - assets/images/success_payment.json
      - assets/images/failure.json
+     - assets/images/gasimage.jpg
+     - assets/images/petite_bouteille_1.jpeg
+     - assets/images/petite_bouteille_2.jpeg
+     - assets/images/petite_bouteille_3.jpeg
+     - assets/images/grande_bouteille_1.jpeg
+     - assets/images/grande_bouteille_2.jpeg
+     - assets/images/grande_bouteille_3.jpeg
 
 
 

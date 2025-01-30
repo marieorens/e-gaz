@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:egaz/pages_authentification/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
 class IntermediatePage extends StatefulWidget {
   const IntermediatePage({super.key});
 
@@ -30,8 +31,8 @@ class _IntermediatePageState extends State<IntermediatePage> {
   void _goToNextPage() {
     if (_currentPage < _slides.length - 1) {
       _pageController.nextPage(
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,  // Vous pouvez essayer différentes courbes pour plus de fluidité
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.easeInOut,  
       );
     } else {
       _navigateToLogin();
@@ -41,7 +42,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
   void _navigateToLogin() {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
+      MaterialPageRoute(builder: (context) =>const LoginScreen()),
       (route) => false,
     );
   }
@@ -70,7 +71,7 @@ class _IntermediatePageState extends State<IntermediatePage> {
                     children: [
                       Text(
                         slide["title"],
-                        style: GoogleFonts.poppins(  // Appliquer Poppins à ce texte
+                        style: GoogleFonts.poppins(  
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -83,8 +84,8 @@ class _IntermediatePageState extends State<IntermediatePage> {
                         slide["animation"],
                         width: 500,
                         height: 500,
-                        repeat: true,  // Pour donner un effet d'animation fluide
-                        reverse: true,  // Animer dans les deux sens pour un effet plus cool
+                        repeat: true,  
+                        reverse: true,  
                       ),
                       const SizedBox(height: 16),
                       Text(

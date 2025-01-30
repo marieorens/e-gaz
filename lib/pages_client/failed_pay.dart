@@ -3,6 +3,8 @@ import 'package:lottie/lottie.dart';
 import 'package:egaz/pages_client/customer_screen.dart';
 
 class FailureScreen extends StatelessWidget {
+  const FailureScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
